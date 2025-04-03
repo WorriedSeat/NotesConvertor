@@ -1,6 +1,6 @@
 from tortoise import Model, fields
 
-class surveyI(Model):
+class survey(Model):
     class Meta:
         table = 'survey'
         
