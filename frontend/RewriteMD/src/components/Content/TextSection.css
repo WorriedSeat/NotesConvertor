@@ -1,0 +1,19 @@
+.text-section {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+  }
+  
+  .text-display {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: none;
+    resize: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-family: monospace;
+    line-height: 1.5;
+  }

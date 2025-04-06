@@ -1,0 +1,53 @@
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+.image-buttons {
+  display: flex;
+  justify-content: left; 
+  padding-left: 10px;
+  align-items: center;
+}
+
+.text-buttons {
+  display: flex;
+  justify-content: left; 
+  padding-left: 10px;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  min-width: 120px;
+  transition: all 0.2s ease;
+}
+
+.rewrite-btn {
+  background-color: var(--accent-primary);
+  color: white;
+}
+
+.download-btn{
+  background-color: rgb(21, 184, 78);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.rewrite-btn:hover {
+  background-color: #2a6fd1;
+}
+
+.download-btn:hover {
+  background-color: #06943c;
+}

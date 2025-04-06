@@ -1,0 +1,106 @@
+.image-section {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+  }
+
+  .image-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+  }
+  
+  .button-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+/* Стили для кнопок с SVG иконками */
+.custom-file-button {
+  padding: 8px 16px;
+  /* background-color: var(--bg-secondary); */
+  background-color: var(--accent-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.delete-button {
+  padding: 8px;
+  /* background-color: var(--bg-secondary); */
+  background-color: #ff4d4f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Стили для SVG иконок */
+.icon {
+  width: 20px;
+  height: 20px;
+  pointer-events: none; /* Чтобы клики проходили сквозь иконку к кнопке */
+}
+
+.custom-file-button .icon {
+  filter: brightness(0) invert(1); /* Делаем иконку белой */
+}
+
+.delete-button .icon {
+  filter: brightness(0) invert(1); /* Делаем иконку белой */
+}
+
+/* Эффекты при наведении */
+.custom-file-button:hover {
+  background-color: #2a6fd1;
+  transform: translateY(-1px);
+}
+
+.delete-button:hover {
+  background-color: #fa3236;
+  transform: translateY(-1px);
+}
+
+  
+  .image-preview {
+    width: 100%;
+    height: 100%;
+    max-height: 750px; /* Ограничиваем максимальную высоту */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden; /* Обрезаем выходящие за границы части */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-tertiary);
+    position: relative;
+  }
+  
+  .image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* Вариант с вертикальным скроллом */
+  .image-preview.scrollable {
+    overflow-y: auto;
+  }
+  
+  .image-preview.scrollable img {
+    max-width: 100%;
+    height: auto;
+    object-fit: none;
+  }
