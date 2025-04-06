@@ -1,0 +1,17 @@
+/* Сброс отступов и высоты */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Основной контейнер */
+  .layout {
+    display: grid;
+    grid-template-areas:
+      "sider header"
+      "sider content"
+      "footer footer";
+    grid-template-columns: 400px 1fr; /* Ширина sider + оставшееся пространство для content */
+    grid-template-rows: auto 1fr auto; /* Автовысота header, растягиваемый content, автовысота footer */
+    min-height: 100vh;
+  }
