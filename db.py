@@ -33,5 +33,5 @@ TORTOISE_CONFIG = {
     "timezone": "UTC"
 }
 
-async def get_connection() -> Connection:
+async def get_connection() -> connections:
     return connections.get('default')
