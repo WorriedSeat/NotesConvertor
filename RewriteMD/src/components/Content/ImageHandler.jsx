@@ -24,25 +24,25 @@ export default function ImageHandler() {
     };
 
     const uploadImage = async (file) => {
-      console.log("Starting upload..."); // [1]
+      console.log("Starting upload..."); 
       
       try {
           const formData = new FormData();
           formData.append('file', file);
-          console.log("FormData created:", formData); // [2]
-  
+          console.log("FormData created:", formData); 
+
           const response = await fetch('http://localhost:8000/ingest/image', {
               method: 'POST',
               body: formData
           });
-          console.log("Raw response:", response); // [3]
+          console.log("Raw response:", response); 
   
           const data = await response.json();
-          console.log("Parsed data:", data); // [4]
+          console.log("Parsed data:", data); 
   
           return data;
       } catch (error) {
-          console.error("Full error:", error); // [5]
+          console.error("Full error:", error); 
           throw error;
       }
   };
