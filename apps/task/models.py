@@ -5,7 +5,7 @@ class Task(Model):
         table = 'task'
         
     id = fields.IntField(pk=True)
-    img = fields.TextField()
-    result_text = fields.BinaryField(null=True)
+    img_path = fields.TextField()
+    result_text = fields.TextField(null=True)
     created_at = fields.DatetimeField(auto_now_add = True, null=False)
-
+    

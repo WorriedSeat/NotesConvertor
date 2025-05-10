@@ -9,11 +9,19 @@ from tortoise.contrib.fastapi import register_tortoise
 from db import TORTOISE_CONFIG
 
 #создаем приложение fastapi
+from apps.task.router import router #fakes
 app = FastAPI()
-
+app.include_router(router) # poka fakes
 #нужно для того чтобы запросы с фронта нахуй не слались
+from fastapi.middleware.cors import CORSMiddleware
+
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["*"]  # Important for some browsers
 )
 
 # для того чтобы приложение нормально стартовало и заканчивалось
