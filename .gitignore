@@ -58,5 +58,8 @@ primer_photo1.jpg
 primer_photo2.jpg
 
 rewriten/*
+!rewriten/.gitkeep
 lastversion/*
+!lastversion/.gitkeep
 feedbacks/*
+!feedbacks/.gitkeep
