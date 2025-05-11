@@ -1,5 +1,3 @@
-# Стандартный .gitignore для React-приложения
-
 # Зависимости
 /node_modules
 /.pnp
@@ -58,3 +56,7 @@ model/words_dataset/
 .python-version
 primer_photo1.jpg
 primer_photo2.jpg
+
+rewriten/*
+lastversion/*
+feedbacks/*
