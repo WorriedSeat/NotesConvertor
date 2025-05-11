@@ -3,11 +3,9 @@ import './ImageSection.css';
 import UploadIcon from '../../assets/icons/upload.svg';
 import DeleteIcon from '../../assets/icons/delete.svg';
 
-export default function ImageHandler() {
+export default function ImageHandler({ onImageSelect }) {
     const [image, setImage] = useState(null);
-    const [response, setResponse] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [selectedFile, setSelectedFile] = useState(null);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -15,43 +13,23 @@ export default function ImageHandler() {
         
         // Validate file type
         if (!file.type.startsWith('image/')) {
-            setError('Please upload an image file');
             return;
         }
 
         setImage(URL.createObjectURL(file));
-        uploadImage(file);
+        setSelectedFile(file);
+        if (onImageSelect) {
+            onImageSelect(file);
+        }
     };
-
-    const uploadImage = async (file) => {
-      console.log("Starting upload..."); 
-      
-      try {
-          const formData = new FormData();
-          formData.append('file', file);
-          console.log("FormData created:", formData); 
-
-          const response = await fetch('http://localhost:8000/ingest/image', {
-              method: 'POST',
-              body: formData
-          });
-          console.log("Raw response:", response); 
-  
-          const data = await response.json();
-          console.log("Parsed data:", data); 
-  
-          return data;
-      } catch (error) {
-          console.error("Full error:", error); 
-          throw error;
-      }
-  };
 
     const handleDeleteImage = () => {
         setImage(null);
-        setResponse(null);
-        setError(null);
+        setSelectedFile(null);
         document.getElementById('file-upload').value = '';
+        if (onImageSelect) {
+            onImageSelect(null);
+        }
     };
 
     return (
@@ -81,20 +59,6 @@ export default function ImageHandler() {
                     {image && <img src={image} alt="Preview" />}
                 </div>
             </div>
-            
-            {isLoading && <div className="status-message">Processing image...</div>}
-            {error && <div className="error-message">{error}</div>}
-            
-            {response && (
-                <div className="response-section">
-                    <h2>Image Details:</h2>
-                    <ul>
-                        <li>Filename: {response.filename}</li>
-                        <li>Dimensions: {response.dimensions}</li>
-                        <li>Saved at: {response.saved_path}</li>
-                    </ul>
-                </div>
-            )}
         </div>
     );
 }

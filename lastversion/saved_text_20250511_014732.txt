@@ -1,0 +1,12 @@
+HA] Rev Fas Oty Dee Dee 127 Fas Rev Rev Rev Rev Rev whe Rev Rev Rev [S2'
+@ #   1 fhomela/Desktop/HAIID_LOI_slides pdf 4 0 File Error
++ | 0 5 HAIID_LOI_slides pdf 5 305% 1
+In many approaches, the focus is on algorithms
+evaluation is made by means of metrics
+posteriori the UI is considered a
+humans are hardly considered
+We often need to involve humans in every phase
+interaction and UI
+explainability of results
+fairness of outcomes
+00.07 0 0 D uS & 11.05.2025

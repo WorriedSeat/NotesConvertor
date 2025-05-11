@@ -1,0 +1,155 @@
+/* SurveyModal.css */
+.survey-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.survey-modal-content {
+    background-color: var(--bg-secondary); /* Changed from #fff */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Match font from the rest of the app if possible, assuming system font for now */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff; /* Directly set to white */
+}
+
+.survey-modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5em; /* Similar to CmpContent h2 */
+    color: inherit; /* Inherit from .survey-modal-content, which is now explicitly white */
+    text-align: center;
+}
+
+.survey-feedback-text {
+    width: calc(100% - 20px); /* Full width minus padding */
+    min-height: 80px;
+    padding: 10px;
+    border: 1px solid var(--border-color, #ccc); /* Use variable or fallback */
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 1em; /* Similar to .text-display */
+    line-height: 1.5;
+    font-family: inherit; /* Inherit from modal content */
+    background-color: var(--bg-tertiary, #fff); /* Assuming textarea might need its own bg */
+    color: var(--text-input-on-dark, #ffffff); /* Changed for actual typed text */
+}
+
+/* Styling for the placeholder text */
+.survey-feedback-text::placeholder {
+    color: #dddddd; /* Light gray for placeholder */
+    opacity: 1; /* Firefox needs this to override default opacity */
+}
+
+.survey-feedback-text::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #dddddd;
+}
+.survey-feedback-text::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #dddddd;
+    opacity: 1;
+}
+.survey-feedback-text:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #dddddd;
+}
+.survey-feedback-text::-ms-input-placeholder { /* Microsoft Edge */
+    color: #dddddd;
+}
+
+.survey-ratings {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap */
+    margin: 10px 0;
+}
+
+.survey-rating-btn {
+    padding: 12px 18px; /* Increased padding */
+    border: 1px solid transparent; /* Default border, can be overridden */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em; /* This might not be needed if only icon */
+    font-weight: bold;
+    color: white; /* Assuming text is white for these buttons */
+    transition: background-color 0.2s, border-color 0.2s;
+    display: flex; /* For aligning icon */
+    align-items: center;
+    justify-content: center;
+    line-height: 1; /* May help vertically align SVGs if they have weird spacing */
+}
+
+.survey-rating-btn svg {
+    width: 24px; /* Increased icon size */
+    height: 24px; /* Increased icon size */
+    /* fill: currentColor; /* Ensured by SVG component prop, but can be reinforced here */
+}
+
+/* Good button - Updated with specific RGB and darker shades */
+.survey-rating-btn.good {
+    background-color: rgb(21, 184, 78);
+    border-color: rgb(18, 160, 68); /* Darker shade for border */
+}
+
+.survey-rating-btn.good:hover {
+    background-color: rgb(18, 160, 68); /* Slightly darker green for hover */
+    border-color: rgb(15, 136, 58); 
+}
+
+.survey-rating-btn.good.selected {
+    background-color: rgb(15, 136, 58); /* Even darker green for selected */
+    border-color: rgb(12, 112, 48);
+}
+
+/* Bad button - To match Delete style */
+.survey-rating-btn.bad {
+    background-color: #ff4d4f; /* From your ImageSection.css for delete-button */
+    border-color: #e6393b; /* Example darker border */
+}
+
+.survey-rating-btn.bad:hover {
+    background-color: #fa3236; /* From your ImageSection.css for delete-button:hover */
+    border-color: #e02125; /* Slightly darker for hover */
+}
+
+.survey-rating-btn.bad.selected {
+    background-color: #fa3236; /* Same as hover, or a bit darker */
+    border-color: #e02125;
+    /* Optionally, add a more distinct selected style */
+}
+
+.survey-actions {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px; 
+    margin-top: 10px;
+}
+
+/* Ensuring action buttons are visible on dark background */
+.btn.survey-submit-btn {
+    background-color: var(--accent-primary, #007bff);
+    color: white;
+}
+.btn.survey-submit-btn:hover {
+    background-color: var(--accent-primary-hover, #0056b3); /* Define this if you have it */
+}
+
+.btn.survey-close-btn {
+    background-color: var(--bg-button-neutral, #6c757d); /* Use variable or fallback */
+    color: white;
+}
+.btn.survey-close-btn:hover {
+    background-color: var(--bg-button-neutral-hover, #5a6268); /* Define this if you have it */
+} 
