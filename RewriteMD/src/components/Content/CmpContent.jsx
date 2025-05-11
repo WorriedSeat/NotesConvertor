@@ -38,10 +38,8 @@ export default function CmpContent(){
 
     const handleImageSelect = (file) => {
         setSelectedFile(file);
-        if (file === null) {
-            setTextContent('');
-            setOriginalOcrText('');
-        }
+        setTextContent('');
+        setOriginalOcrText('');
     };
 
     const handleRewrite = async () => {
@@ -170,7 +168,7 @@ export default function CmpContent(){
             <div className="action-buttons">
                 <div className='image-buttons'>
                     <button 
-                        className="btn rewrite-btn" 
+                        className={`btn rewrite-btn ${selectedFile && !isProcessing && !originalOcrText ? 'rewrite-btn-active' : ''}`}
                         onClick={handleRewrite}
                         disabled={!selectedFile || isProcessing}
                     >
@@ -178,7 +176,13 @@ export default function CmpContent(){
                     </button>
                 </div>
                 <div className='text-buttons'>
-                    <button className="btn download-btn" onClick={handleDownloadAndSave}>Download</button>
+                    <button 
+                        className={`btn download-btn ${textContent && !isSurveyModalOpen ? 'download-btn-active' : ''}`}
+                        onClick={handleDownloadAndSave}
+                        disabled={!textContent}
+                    >
+                        Download
+                    </button>
                 </div>
             </div>
 

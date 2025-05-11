@@ -146,10 +146,26 @@
     background-color: var(--accent-primary-hover, #0056b3); /* Define this if you have it */
 }
 
+.submit-feedback-btn-active {
+  box-shadow: 0 0 8px 2px var(--accent-primary-dark, #0056b3); /* A slightly darker blue glow, matches hover */
+}
+
 .btn.survey-close-btn {
     background-color: var(--bg-button-neutral, #6c757d); /* Use variable or fallback */
     color: white;
 }
 .btn.survey-close-btn:hover {
     background-color: var(--bg-button-neutral-hover, #5a6268); /* Define this if you have it */
-} 
+}
+
+.survey-actions button:last-child {
+    /* If you want specific styling for the last button (Close) */
+}
+
+/* Rating button selected state - Assuming this section might exist or be added later */
+/* For example:
+.survey-rating-btn.selected {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 5px var(--accent-primary);
+}
+*/ 
