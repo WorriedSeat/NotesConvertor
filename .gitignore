@@ -1,6 +1,11 @@
 # Стандартный .gitignore для React-приложения
 
 # Зависимости
+__pycache__/
+*.py[cod]
+*$py.class
+.vscode/
+
 /node_modules
 /.pnp
 .pnp.js
@@ -58,3 +63,12 @@ model/words_dataset/
 .python-version
 primer_photo1.jpg
 primer_photo2.jpg
+
+rewriten/*
+!rewriten/.gitkeep
+lastversion/*
+!lastversion/.gitkeep
+feedbacks/*
+!feedbacks/.gitkeep
+history/*
+!history/.gitkeep
