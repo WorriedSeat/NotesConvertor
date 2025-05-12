@@ -1,0 +1,49 @@
+.history-section {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    margin-top: 15px; /* Space above the history section */
+    color: var(--text-primary);
+}
+
+.history-section h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color-light);
+    padding-bottom: 10px;
+}
+
+.history-section.empty p {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.history-list {
+    max-height: 250px; /* Limit height and make it scrollable */
+    overflow-y: auto;
+    padding-right: 5px; /* Space for scrollbar to avoid overlap */
+}
+
+/* Custom scrollbar for history list (optional, but nice touch) */
+.history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color, #888); /* Use a variable or fallback */
+    border-radius: 4px;
+    border: 2px solid var(--bg-tertiary); /* Creates padding around thumb */
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-color, #555);
+} 

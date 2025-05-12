@@ -48,6 +48,14 @@
   background-color: #2a6fd1;
 }
 
+.rewrite-btn-active {
+  box-shadow: 0 0 10px 2px var(--accent-primary-light, #79b1ff); /* A light blue glow */
+}
+
+.download-btn-active {
+  box-shadow: 0 0 10px 2px rgba(21, 184, 78, 0.7); /* A green glow, slightly transparent */
+}
+
 .download-btn:hover {
   background-color: #06943c;
 }

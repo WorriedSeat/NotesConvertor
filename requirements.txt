@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+Pillow
+easyocr
+numpy
+opencv-python-headless
+tortoise-orm
+asyncpg 
