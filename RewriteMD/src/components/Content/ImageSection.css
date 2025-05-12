@@ -92,6 +92,24 @@
     display: block; /* Ensures it behaves as a block element */
   }
   
+  .image-preview.drag-over {
+    border-style: dashed;
+    border-color: var(--accent-primary, #007bff); /* Use accent color for the border */
+    background-color: rgba(0, 123, 255, 0.05); /* Slight tint of accent color */
+  }
+
+  .drop-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: var(--text-secondary, #6c757d);
+    font-size: 1em;
+    text-align: center;
+    padding: 20px;
+  }
+
   /* Remove the .scrollable variant as the main .image-preview now handles scrolling */
   /*
   .image-preview.scrollable {

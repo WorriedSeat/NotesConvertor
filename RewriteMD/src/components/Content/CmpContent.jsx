@@ -6,7 +6,23 @@ import ImageHandler from './ImageHandler';
 import SurveyModal from '../SurveyModal/SurveyModal';
 import { useState, useEffect } from 'react';
 
-export default function CmpContent(){
+// Helper function to generate a data URL from a File object for thumbnails
+const generateThumbnailDataUrl = (file, callback) => {
+    if (!file || !file.type.startsWith('image/')) {
+        callback(null);
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        callback(e.target.result);
+    };
+    reader.onerror = () => {
+        callback(null);
+    };
+    reader.readAsDataURL(file);
+};
+
+export default function CmpContent({ onAddHistoryEntry }) {
     const [textContent, setTextContent] = useState('');
     const [originalOcrText, setOriginalOcrText] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
@@ -58,15 +74,24 @@ export default function CmpContent(){
             });
 
             const data = await response.json();
-            if (data.text_content) {
+            if (response.ok && data.text_content) {
                 setTextContent(data.text_content);
                 setOriginalOcrText(data.text_content);
+
+                if (onAddHistoryEntry) {
+                    onAddHistoryEntry({
+                        file: selectedFile,
+                        textSnippet: data.text_content.substring(0, 70) + (data.text_content.length > 70 ? '...' : ''),
+                        type: 'ocr'
+                    });
+                }
+
             } else {
-                setTextContent('');
+                setTextContent('Error processing image or no text found.');
                 setOriginalOcrText('');
             }
         } catch (error) {
-            setTextContent('');
+            setTextContent('Failed to fetch OCR results.');
             setOriginalOcrText('');
         } finally {
             setIsProcessing(false);
@@ -79,7 +104,6 @@ export default function CmpContent(){
             return;
         }
 
-        // Client-side download as .md
         const blob = new Blob([textContent], { type: 'text/markdown;charset=utf-8' });
         const href = URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -91,8 +115,15 @@ export default function CmpContent(){
         URL.revokeObjectURL(href);
 
         setIsSurveyModalOpen(true);
+        
+        if (selectedFile && onAddHistoryEntry) {
+            onAddHistoryEntry({
+                file: selectedFile,
+                textSnippet: `Downloaded: ${textContent.substring(0, 50)}` + (textContent.length > 50 ? '...' : ''),
+                type: 'download'
+            });
+        }
 
-        // Server-side saving of edited text as .txt
         try {
             const response = await fetch('http://localhost:8000/save/text', {
                 method: 'POST',
@@ -106,7 +137,7 @@ export default function CmpContent(){
                 throw new Error(errorData.detail || 'Failed to save edited text on server');
             }
             const result = await response.json();
-            console.log('Edited text saved on server:', result.message); 
+            console.log('Edited text saved on server:', result.message);
         } catch (error) {
             console.error('Error saving edited text on server:', error);
             alert('Error saving edited text on server: ' + error.message);

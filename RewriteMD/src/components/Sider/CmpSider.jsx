@@ -1,22 +1,22 @@
 import './CmpSider.css';
+import HistorySection from '../History/HistorySection';
 
-export default function CmpSider(){
+export default function CmpSider({ historyLog }) {
     return(
         <aside className='sider'>
-            <dev className='RewriteMD_container'>
+            <div className='RewriteMD_container'>
                 Rewrite
-                <dev className='md'>MD</dev>
-            </dev>
+                <div className='md'>MD</div>
+            </div>
 
-            <dev className='history-header'>History:</dev>
-            <dev className='history-container'>
-                {/* <History_unit/> */}
-                history unit here
-            </dev>
-            <dev className='profile'>
+            <div className='history-header'>History:</div>
+            <div className='history-container'>
+                <HistorySection historyLog={historyLog} />
+            </div>
+            <div className='profile'>
                 {/* <Profile/> */}
-                profile page here
-            </dev>
+                {/* profile page here text removed */}
+            </div>
         </aside>
     )
 }

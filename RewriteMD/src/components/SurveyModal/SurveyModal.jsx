@@ -22,19 +22,12 @@ const SurveyModal = ({ isOpen, onClose, onSubmit }) => {
         return null;
     }
 
-    const handleSubmit = () => {
-        if (rating === null) {
-            alert('Please select a rating (Good or Bad) before submitting.');
-            return;
-        }
-        onSubmit({ text: feedbackText, rating });
-        setFeedbackText(''); // Reset for next time
-        setRating(null);    // Reset rating
-        onClose(); // Close modal after submit
-    };
-
     const handleRating = (newRating) => {
-        setRating(newRating);
+        setRating(newRating); // Keep for visual feedback if modal doesn't close instantly
+        onSubmit({ text: feedbackText, rating: newRating });
+        setFeedbackText(''); // Reset for next time
+        // setRating(null); // Reset rating - already handled by onSubmit causing modal to close and re-init
+        onClose(); // Close modal after rating/submit
     };
 
     return (
@@ -64,9 +57,7 @@ const SurveyModal = ({ isOpen, onClose, onSubmit }) => {
                     </button>
                 </div>
                 <div className="survey-actions">
-                    <button className="btn survey-submit-btn" onClick={handleSubmit}>
-                        Submit Feedback
-                    </button>
+                    {/* Submit Feedback button removed */}
                     <button className="btn survey-close-btn" onClick={onClose}>
                         Close
                     </button>
